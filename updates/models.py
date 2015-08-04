@@ -7,3 +7,6 @@ class Chirp(models.Model):
     message = models.CharField(max_length=140)
     title = models.CharField(max_length=10)
     posted_at = models.DateTimeField()
+
+    def __str__(self):
+        return "{} by {} posted {}".format(self.title, self.author, self.title)
