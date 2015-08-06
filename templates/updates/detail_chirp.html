@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block content %}
     <h1>Update Detail</h1>
     <p>Title: {{ chirp.title }}</p>
     <p>Author: {{ chirp.author.username }}</p>
     <p>Message: {{ chirp.message }}</p>
     <p>Posted At: {{ chirp.posted_at }}</p>
-</body>
-</html>
+    <img src="{% static "images/hqdefault.jpg" %}" alt="My image"/>
+{% endblock %}
