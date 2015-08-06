@@ -25,7 +25,7 @@ def create_chirp(request):
         form = ChirpForm(request.POST)
 
         if form.is_valid():
-            chirp = form.cleaned_data
+            chirp = form.save(commit=False)
             chirp.author = request.user
             chirp.posted_at = datetime.datetime.now()
             chirp.save()

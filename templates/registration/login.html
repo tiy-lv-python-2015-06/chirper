@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
 YAY I am a login page
 
-<form method="post" action="{% url 'login' %}">
+<form method="post" action="{% url 'login' %}" class="form">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}">
-    {{ form.as_p }}
-    <input type="submit" value="Login">
+    {% bootstrap_form form %}
+    <input type="submit" value="Login" class="btn btn-default">
 </form>
-</body>
-</html>
+{% endblock %}

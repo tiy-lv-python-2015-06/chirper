@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>List of all Chirps</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block title %}List of Recent Chirps{% endblock %}
+
+{% block content %}
     <h1>Here is the list of our chirps</h1>
-    <ul>
+    <ul class="list-group">
         {% for chirp in chirps %}
-            <li><a href="{% url 'detail_chirp' chirp.id %}">{{ chirp.title }}</a></li>
+            <li class="list-group-item"><a href="{% url 'detail_chirp' chirp.id %}">{{ chirp.title }}</a></li>
         {% endfor %}
     </ul>
 
     <p>
         Loaded at: {{ page_load }}
     </p>
-</body>
-</html>
+{% endblock %}
