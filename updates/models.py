@@ -25,3 +25,10 @@ class Chirp(models.Model):
 
     def __str__(self):
         return "{} by {} posted {}".format(self.title, self.author, self.title)
+
+class Tag(models.Model):
+    name = models.CharField(max_length=5)
+    chirps = models.ManyToManyField(Chirp)
+
+    def __str__(self):
+        return self.name

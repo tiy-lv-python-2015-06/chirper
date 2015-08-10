@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from home.views import HomePageView
 
 urlpatterns = [
+    url(r'^$', HomePageView.as_view(), name='index'),
     url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page':"/updates/"}, name='logout'),
     url('^', include('django.contrib.auth.urls')),
     url(r'^updates/', include('updates.urls')),
