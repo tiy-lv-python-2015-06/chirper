@@ -5,15 +5,22 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 
 # Create your models here.
+from django.db.models import Manager
 from django.utils import timezone
+
+class JeffChirpsManager(Manager):
+    def get_queryset(self):
+        return super(JeffChirpsManager, self).get_queryset().filter(author__username='jeff')
 
 
 class Chirp(models.Model):
+
     author = models.ForeignKey(User)
     message = models.CharField(max_length=140,
                                validators=[MinLengthValidator(5, message="Type more than 5 characters lazy ass")])
     title = models.CharField(max_length=30)
-    posted_at = models.DateTimeField()
+    posted_at = models.DateTimeField(auto_now_add=True)
+    #modified_at = models.DateTimeField(auto_now=True)
 
     def was_published_recently(self):
         """

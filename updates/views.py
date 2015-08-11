@@ -15,7 +15,7 @@ class ChirpList(ListView):
     template_name = "updates/list_chirps.html"
     #default = chirp_list
     # context_object_name = 'chirps' Would change the list of chirps to be passed at chirps
-    queryset = Chirp.objects.all().order_by('-posted_at')
+    queryset = Chirp.objects.select_related().all().order_by('-posted_at')
     paginate_by = 5
 
     def get_context_data(self, **kwargs):
@@ -39,7 +39,6 @@ class ChirpCreate(CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        form.instance.posted_at = datetime.datetime.now()
         return super(ChirpCreate, self).form_valid(form)
 
 class ChirpUpdate(UpdateView):
