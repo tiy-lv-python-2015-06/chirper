@@ -111,6 +111,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL='/updates/'
 
 
 # Static files (CSS, JavaScript, Images)
