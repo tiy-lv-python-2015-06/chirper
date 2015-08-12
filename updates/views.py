@@ -29,10 +29,23 @@ class ChirpDetail(DetailView):
     # Default chirp_detail.html
     template_name = 'updates/detail_chirp.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(ChirpDetail, self).get_context_data(**kwargs)
+
+        # Add the title to the session
+        if 'viewed' not in self.request.session.keys():
+            self.request.session['viewed'] = []
+
+        if self.object.title not in self.request.session['viewed']:
+            self.request.session['viewed'].append(self.object.title)
+            self.request.session.modified = True
+
+        return context
+
 
 class ChirpCreate(CreateView):
     model = Chirp
-    fields = ('title', 'message')
+    form_class = ChirpForm
     success_url = reverse_lazy('list_chirps')
     # Default = chirp_form.html
     template_name = "updates/create_chirp.html"
