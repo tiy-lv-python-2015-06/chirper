@@ -1,0 +1,57 @@
+body {
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+    margin: 0 10%;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: lightgrey;
+}
+
+header span {
+    font-size: 30px;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+h3 {
+    font-size: 40px;
+    text-align: center;
+}
+
+a:link {
+    color: slategrey;
+}
+
+a:visited {
+    color: slategray;
+}
+
+.main-content {
+    padding: 20px 40px;
+}
+
+.section {
+    margin: 100px 0;
+}
+
+.center-block {
+    text-align: center;
+}
+
+.callout {
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    border-bottom: 2px solid slategray;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+footer {
+    font-size: 10px;
+    text-align: center;
+}
