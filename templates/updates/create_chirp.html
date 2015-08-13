@@ -1,11 +1,16 @@
 {% extends "base.html" %}
-{% load bootstrap3 %}
+{% load widget_tweaks %}
 
 {% block content %}
     <h1>Create your chirp here</h1>
     <form method="post" action="{%  url 'create_chirp' %}" class="form">
         {% csrf_token %}
-        {% bootstrap_form form %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.errors }}
+                {{ field.label_tag }}{{ field|add_class:"form-control" }}
+            </div>
+        {% endfor %}
         <input type="submit" name="submit" value="CHIRP!!!" class="btn btn-danger">
     </form>
 {% endblock %}
