@@ -7,7 +7,10 @@
     <h1>Here is the list of our chirps</h1>
     <ul class="list-group">
         {% for chirp in chirp_list %}
-            <li class="list-group-item"><a href="{% url 'detail_chirp' chirp.id %}">{{ chirp.title }} by {{ chirp.author.username }}</a>-{{ chirp.posted_at }}
+            <li class="list-group-item">
+                <a href="{% url 'detail_chirp' chirp.id %}">
+                    {{ chirp.title }} by {{ chirp.author.username }}
+                </a>-{{ chirp.posted_at }}
             {% for tag in chirp.tag_set.all %}
                 {{ tag }}
             {% endfor %}
