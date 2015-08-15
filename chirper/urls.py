@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page':"/updates/"}, name='logout'),
     url('^', include('django.contrib.auth.urls')),
+    url('^api/', include('api.urls')),
     url(r'^updates/', include('updates.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
