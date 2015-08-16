@@ -1,3 +1,6 @@
 *.pyc
 __pycache__/*
 .idea/*
+.envrc
+.direnv
+.ipynb_checkpoints
