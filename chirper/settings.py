@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'bootstrap3',
     'widget_tweaks',
+    'rest_framework',
     'updates',
     'user',
 )

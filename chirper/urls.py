@@ -16,9 +16,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from home.views import IndexView
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
+    url(r'^api/', include('api.urls')),
     url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page':"/updates/"}, name='logout'),
     url('^', include('django.contrib.auth.urls')),
     url(r'^updates/', include('updates.urls')),
