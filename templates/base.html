@@ -1,3 +1,4 @@
+{% load staticfiles %}
 {% load bootstrap3 %}
 <!DOCTYPE html>
 <html>
@@ -5,8 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    <link rel="stylesheet"
+          href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/site-styles.css' %}">
+    <script src="{% static 'jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <title>Chirper - {% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -15,5 +19,20 @@
         {% block content %}
         {% endblock %}
     </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">
+                {% if request.session.viewed %}
+                Recently viewed chirps:
+                <ol class="breadcrumb">
+                    {% for chirp in request.session.viewed %}
+                        <li>{{ chirp }}</li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
