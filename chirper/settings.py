@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'updates',
     'user',
+    'api',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -124,7 +125,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "global"),
 )
 
-#STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 BOOTSTRAP3 = {
     # The URL to the jQuery JavaScript file
