@@ -1,12 +1,14 @@
 import datetime
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.core.validators import MinLengthValidator
 from django.db import models
-
-# Create your models here.
 from django.db.models import Manager
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
+
 
 class JeffChirpsManager(Manager):
     def get_queryset(self):
@@ -39,3 +41,8 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        print("New User Created")
