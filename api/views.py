@@ -1,3 +1,4 @@
+from api.permissions import IsOwnerReadOnly
 from django.contrib.auth.models import User
 from rest_framework import generics
 from updates.models import Chirp
@@ -10,6 +11,8 @@ class ChirpList(generics.ListCreateAPIView):
     """
     queryset = Chirp.objects.all()
     serializer_class = ChirpSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerReadOnly)
 
     def perform_create(self, serializer):
         serializer.save(author=User.objects.get(pk=1))
@@ -19,3 +22,5 @@ class ChirpDetailAndUpdate(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Chirp.objects.all()
     serializer_class = ChirpSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerReadOnly)

@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'widget_tweaks',
     'rest_framework',
+    'rest_framework.authtoken',
     'updates',
     'user',
 )
@@ -145,6 +146,6 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.'
+        'rest_framework.authentication.TokenAuthentication',
     )
 }
