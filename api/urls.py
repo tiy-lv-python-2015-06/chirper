@@ -1,11 +1,14 @@
-from api.views import DetailAndUpdate
+from api.views import DetailAndUpdate, ListCreateView
 from django.conf.urls import url
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.urlpatterns import format_suffix_patterns
 
 __author__ = 'jeff'
 
 urlpatterns = [
-    url(r'^chirps/$', 'api.views.list_create_view'),
-    url(r'^chirps/(?P<chirp_id>[0-9]+)/',
-        csrf_exempt(DetailAndUpdate.as_view()))
+    url(r'^chirps/$', ListCreateView.as_view()),
+    url(r'^chirps/(?P<pk>[0-9]+)/',
+        DetailAndUpdate.as_view())
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
