@@ -1,4 +1,5 @@
 import datetime
+import logging
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
@@ -8,6 +9,7 @@ from django.views.generic import View, ListView, DetailView, CreateView, UpdateV
 from updates.forms import ChirpForm
 from updates.models import Chirp
 
+logger = logging.getLogger(__name__)
 
 class ChirpList(ListView):
     model = Chirp
@@ -31,6 +33,7 @@ class ChirpDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ChirpDetail, self).get_context_data(**kwargs)
+        logger.debug("Hello someone wants a chirp {}".format(self.object.id))
 
         if 'viewed' not in self.request.session:
             self.request.session['viewed'] = []

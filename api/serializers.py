@@ -13,3 +13,11 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'chirp_set')
+
+
+class ChirpSerializer(serializers.ModelSerializer):
+    author = serializers.ReadOnlyField(source='author.id')
+
+    class Meta:
+        model = Chirp
+        fields = ('id', 'author', 'message', 'title', 'posted_at')

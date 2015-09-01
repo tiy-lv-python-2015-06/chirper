@@ -1,10 +1,10 @@
 from api.permissions import IsOwnerReadOnly
-from api.serializers import UserSerializer
+from api.serializers import UserSerializer, ChirpSerializer
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from rest_framework import generics, permissions
 from updates.models import Chirp
-from updates.serializers import ChirpSerializer
+
 
 
 
