@@ -1,4 +1,6 @@
+from chirper import settings
 from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required
 from updates.views import ChirpList, ChirpDetail, ChirpCreate, ChirpUpdate
 

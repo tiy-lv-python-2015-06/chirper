@@ -8,6 +8,6 @@
     <p>Message: {{ chirp.message }}</p>
     <p>Posted At: {{ chirp.posted_at }}</p>
 
-    <img src="{% static "images/cutesmall.jpg" %}" alt="Another cutie"/>
+    <img src="{{ MEDIA_URL }}{{ chirp.author.profile.photo }}" alt="Another cutie"/>
 
 {% endblock %}
